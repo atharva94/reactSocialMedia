@@ -41,7 +41,7 @@ const PostListProvider = ({children}) => {
         })
     };
 
-    const [postList, dispatchPostList] = useReducer(postListReducer, defaultPostList);
+    const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
     return (
         <PostList.Provider value={{ postList, addPost, deletePost}}>
@@ -49,22 +49,5 @@ const PostListProvider = ({children}) => {
         </PostList.Provider>
     );
 };
-
-const defaultPostList = [{
-    id : '1',
-    title : 'Yo',
-    body : 'Lets chill',
-    reactions : 2,
-    userId : 'user-9',
-    tags : ['chill','enjoy']
-},
-{
-    id : '2',
-    title : 'No',
-    body : 'Peace',
-    reactions : 15,
-    userId : 'user-12',
-    tags : ['peace','bored']
-}];
 
 export default PostListProvider;
