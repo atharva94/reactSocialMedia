@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom/client'
 import App from './routes/App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import CreatPost from './components/CreatePost.jsx';
-import PostList from './components/PostList.jsx';
+import CreatPost, { createPostAction } from './components/CreatePost.jsx';
+import PostList, { postLoader } from './components/PostList.jsx';
 
 const router = createBrowserRouter([
-  { path: "/", element: <App />, children: [
-    { path: "/", element: <PostList />},
-    { path: "/create-post", element: <CreatPost />}
-  ]}
+  { 
+    path: "/", 
+    element: <App />, 
+    children: [
+      { path: "/", element: <PostList />, loader: postLoader},
+      { path: "/create-post", element: <CreatPost />, action: createPostAction}
+    ]
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
